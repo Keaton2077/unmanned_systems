@@ -1,13 +1,35 @@
 #Problem 4
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 
-# Creating a Coordinate System
-grid_size = 0.5
-min_x, max_x = 0, 10
-min_y, max_y = 0, 10
-x_values = np.arange(min_x, max_x + grid_size, grid_size)
-y_values = np.arange(min_y, max_y + grid_size, grid_size)
+x_array = []
+y_array = []
+
+for i in np.arange(0, 10.5, 0.5): 
+    x_array.append(i)  
+    y_array.append(i + 5)  
+
+plt.plot(x_array, y_array)
+
+def compile_index(min_x: int, max_x: int, min_y: int, max_y: int, gs: float, x_current: int, y_current: int) -> int:
+    index = int(((x_current - min_x) / gs) + (((y_current - min_y) / gs) * ((max_x + gs) - min_x) / gs))
+    return index
+
+min_x = 0
+max_x = 10 
+gs = 0.5
+
+min_y = 0
+max_y = 10
+
+x_current = 10
+y_current = 2
+
+index = compile_index(min_x, max_x, min_y, max_y, gs, x_current, y_current)
+
+x_values = np.arange(min_x, max_x + gs, gs)
+y_values = np.arange(min_y, max_y + gs, gs)
+
 fig, ax = plt.subplots()
 ax.set_xlim(min_x, max_x)
 ax.set_ylim(min_y, max_y)
@@ -16,20 +38,14 @@ for x in x_values:
 for y in y_values:
     plt.axhline(y=y, color='gray', linewidth=0.5)
 
-# Compute and plot node indices
-node_index = 0
-for y in y_values:
-    for x in x_values:
-        plt.text(x + grid_size / 2, y + grid_size / 2, str(node_index), color='red', fontsize=6, ha='center', va='center')
-        node_index += 1
+for x in x_values:
+    for y in y_values:
+        index = compile_index(min_x, max_x, min_y, max_y, gs, x, y)
+        ax.text(x , y , str(index), color='red', fontsize=8, ha='center', va='center')
 
-plt.gca().set_aspect('equal', adjustable='box')
-plt.xlabel('X')
-plt.ylabel('Y')
-plt.title('Node Index')
-plt.grid(True)
-plt.show()
-
+ax.set_xlabel("X")
+ax.set_ylabel("Y")
+ax.set_title("Grid Node Indices")
 
 
 
