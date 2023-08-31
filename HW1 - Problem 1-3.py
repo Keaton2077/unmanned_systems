@@ -37,14 +37,14 @@ circle2 = patches.Circle((9, 8), radius=0.3, edgecolor='blue', facecolor='none')
 ax.add_patch(circle2)
 
 #Draw reduced graph
-plt.plot([1, 1], [1, 2], color='blue')
-plt.plot([1, 2], [2, 8], color='blue')
-plt.plot([2, 6], [8, 9], color='blue')
-plt.plot([6, 9], [9, 8], color='blue')
 plt.plot([1, 6], [1, 1], color='blue')
 plt.plot([6, 9], [1, 8], color='blue')
 
 #Draw remaining standard edges
+plt.plot([1, 2], [2, 8], color='black')
+plt.plot([2, 6], [8, 9], color='black')
+plt.plot([6, 9], [9, 8], color='black')
+plt.plot([1, 1], [1, 2], color='black')
 plt.plot([1, 3], [2, 2], color='black')
 plt.plot([3, 6], [2, 1], color='black')
 plt.plot([3, 3], [2, 4], color='black')
@@ -99,12 +99,12 @@ circle2 = patches.Circle((9, 8), radius=0.3, edgecolor='blue', facecolor='none')
 ax.add_patch(circle2)
 
 # Draw reduced visibility graph
-lines1 = [([1, 2], [1, 8]), ([1, 6], [1, 1]), ([6, 9], [1, 8]), ([2, 9], [8, 8])]
+lines1 = [ ([1, 6], [1, 1]), ([6, 9], [1, 8]) ]
 for line1 in lines1:
     plt.plot(line1[0], line1[1], color='blue')
     
 # Draw remaining standard edges
-lines2 = [([2, 6], [8, 1]), ([5, 6], [6, 7]), ([2, 6], [8, 7]), ([6, 9], [7, 8]), ([5, 9], [6, 8]),([5, 6], [6, 1])]
+lines2 = [([2, 6], [8, 1]), ([5, 6], [6, 7]), ([2, 6], [8, 7]), ([6, 9], [7, 8]), ([5, 9], [6, 8]),([5, 6], [6, 1]),([1, 2], [1, 8]),([2, 9], [8, 8])]
 for line2 in lines2:
     plt.plot(line2[0], line2[1], color='black')
     
