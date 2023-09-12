@@ -127,8 +127,8 @@ for obs in obstacle_list:
 start_x = 0
 start_y = 0
 
-goal_x = 7
-goal_y = 7
+goal_x = 8
+goal_y = 9
 
 start_circle = patches.Circle((start_x, start_y), radius=0.3, edgecolor='yellow', facecolor='none')
 ax.add_patch(start_circle)
