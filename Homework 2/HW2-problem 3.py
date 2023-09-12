@@ -111,7 +111,7 @@ def get_all_moves(current_x:float, current_y:float, gs:float) -> list:
             
     return move_list
     
-obstacle_positions =  [(1,1), (4,4), (3,4), (5,0)]
+obstacle_positions =  [(1, 1), (4, 4), (3, 4), (5, 0), (5, 1), (0, 7), (1, 7), (2, 7), (3, 7)]
 obstacle_list = [] 
 obstacle_radius = 0.25
 
