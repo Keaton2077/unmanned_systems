@@ -131,7 +131,7 @@ def find_path(start_point, goal_point, grid_step, obstacle_positions, obstacle_r
 start_point = (0, 0)
 goal_point = (8, 9)
 grid_step = 0.5
-obstacle_positions = [(1, 1), (4, 4), (3, 4), (5, 0)]
+obstacle_positions = [(1, 1), (4, 4), (3, 4), (5, 0), (5, 1), (0, 7), (1, 7), (2, 7), (3, 7)]
 obstacle_radius = 0.25
 
 obstacle_list = [Obstacle(obs_pos[0], obs_pos[1], obstacle_radius) for obs_pos in obstacle_positions]
