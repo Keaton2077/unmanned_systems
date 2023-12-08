@@ -4,10 +4,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 
-# 配送点
+
 cities = np.array([(9,4), (4,4), (1,9), (9,7), (6,14)])
 
-# 障碍物列表
+
 obstacle_list = np.array([(2,2), (2,3), (2,4), (2,5), (0,5), (1,5), (2,5), (3,5), (4,5), (5,5), (8,2), (9,2), (10,2), (11,2),
 (12,2), (13,3), (8,4), (8,5), (8,6), (8,7), (8,8), (8,9), (8,7), (2,7), (3,7), (4,7), (5,7), (6,7), (7,6), (9,6),
 (10,6), (11,6), (12,6), (15,8), (2,9), (2,10), (2,11), (2,12), (2,13), (5,9), (5,10), (5,11), (5,12), (5,13),
@@ -130,7 +130,7 @@ def genetic_algorithm(
     return_history=False,
     verbose=False,
 ):
-    # 从城市列表中移除第一个城市
+
     cities = cities[1:]
     
     pop = init_population(cities, adjacency_mat, n_population)
@@ -151,20 +151,20 @@ def genetic_algorithm(
         children = pop.mutate(p_cross, p_mut)
         pop = Population(children, pop.adjacency_mat)
     
-    # 在最佳路径前面添加第一个城市
+
     best = np.insert(best, 0, 0)
     
     if return_history:
         return best, history
     return best
 
-# 计算运行时间
+
 start_time = time.time()
 best_path = genetic_algorithm(cities, adjacency_mat, verbose=True)
 end_time = time.time()
 print(f"Computation time: {end_time - start_time} seconds")
 
-# 计算最佳路径成本
+
 best_path_cost = sum(
     [
         adjacency_mat[best_path[i], best_path[i + 1]]
@@ -173,7 +173,7 @@ best_path_cost = sum(
 )
 print(f"Best path cost: {best_path_cost}")
 
-# 绘制障碍物和路径
+
 plt.figure()
 plt.plot(obstacle_list[:, 0], obstacle_list[:, 1], "ro")
 plt.plot(cities[:, 0], cities[:, 1], "bo")
