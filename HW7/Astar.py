@@ -22,15 +22,16 @@ class Obstacle:
         return dist_from <= self.radius
 
 class Astar:
-    def __init__(self, min_x: float, max_x: float, min_y: float, max_y: float, gs: float, obstacle_positions: list, obstacle_radius: float):
+    def __init__(self, min_x: float, max_x: float, min_y: float, max_y: float,
+                 gs: float, obs_positions: list, obs_radius: float):
         self.min_x = min_x
         self.max_x = max_x
         self.min_y = min_y
         self.max_y = max_y
         self.gs = gs
-        self.obstacle_positions = obstacle_positions
-        self.obstacle_radius = obstacle_radius
-        self.obstacle_list = [Obstacle(obs_pos[0], obs_pos[1], obstacle_radius) for obs_pos in obstacle_positions]
+        self.obs_positions = obs_positions
+        self.obs_radius = obs_radius
+        self.obstacle_list = [Obstacle(obs_pos[0], obs_pos[1], obs_radius) for obs_pos in obs_positions]
 
     def get_all_moves(self, current_x: float, current_y: float) -> list:
         move_list = []
@@ -144,23 +145,23 @@ class Astar:
         return wp_list, total_travel_cost
 
 # Usage
-start_point = (1, 1)
-goal_point = (7, 13)
-gs = 1
-Obstacle_x = [2, 2, 2, 2, 0, 1, 2, 3, 4, 5, 5, 5, 5, 5, 8, 9, 10, 11, 12, 13, 8, 8, 8, 
-8, 8, 8, 8, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 2, 2, 2, 2, 2, 2, 5, 5, 5, 5, 5,
-5, 5, 6, 7, 8, 9, 10, 11, 12, 12, 12, 12, 12]
-Obstacle_y = [2, 3, 4, 5, 5, 5, 5, 5, 5, 5, 2, 3, 4, 5, 2, 2, 2, 2, 2, 2, 3, 4, 5, 6, 7, 
-8, 9, 7, 7, 7, 7, 7, 7, 6, 6, 6, 6, 6, 6, 6, 8, 9, 10, 11, 12, 13, 9, 10, 11, 12, 13, 
-14, 15, 12, 12, 12, 12, 12, 12, 8, 9, 10, 11, 12]
-obstacle_positions = list(zip(Obstacle_x, Obstacle_y))
-obstacle_radius = 0.5
+# start_point = (1, 1)
+# goal_point = (7, 13)
+# gs = 1
+# Obstacle_x = [2, 2, 2, 2, 0, 1, 2, 3, 4, 5, 5, 5, 5, 5, 8, 9, 10, 11, 12, 13, 8, 8, 8, 
+# 8, 8, 8, 8, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 2, 2, 2, 2, 2, 2, 5, 5, 5, 5, 5,
+# 5, 5, 6, 7, 8, 9, 10, 11, 12, 12, 12, 12, 12]
+# Obstacle_y = [2, 3, 4, 5, 5, 5, 5, 5, 5, 5, 2, 3, 4, 5, 2, 2, 2, 2, 2, 2, 3, 4, 5, 6, 7, 
+# 8, 9, 7, 7, 7, 7, 7, 7, 6, 6, 6, 6, 6, 6, 6, 8, 9, 10, 11, 12, 13, 9, 10, 11, 12, 13, 
+# 14, 15, 12, 12, 12, 12, 12, 12, 8, 9, 10, 11, 12]
+# obstacle_positions = list(zip(Obstacle_x, Obstacle_y))
+# obstacle_radius = 0.5
 
-astar = Astar(0, 15, 0, 15, gs, obstacle_positions, obstacle_radius)
-start_time = time.time()
-result_wp_list, result_total_travel_cost = astar.find_path(start_point, goal_point)
-end_time = time.time()
-execution_time = end_time - start_time
-print("Execution time:", execution_time, "seconds")
+# astar = Astar(0, 15, 0, 15, gs, obstacle_positions, obstacle_radius)
+# start_time = time.time()
+# result_wp_list, result_total_travel_cost = astar.find_path(start_point, goal_point)
+# end_time = time.time()
+# execution_time = end_time - start_time
+# print("Execution time:", execution_time, "seconds")
 
 # Access result_wp_list and result_total_travel_cost as needed
