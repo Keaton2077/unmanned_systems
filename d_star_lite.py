@@ -39,7 +39,7 @@ def compare_coordinates(node1: Node, node2: Node):
 
 
 class DStarLite:
-
+    
     # Please adjust the heuristic function (h) if you change the list of
     # possible motions
     motions = [
@@ -53,7 +53,7 @@ class DStarLite:
         Node(-1, -1, math.sqrt(2))
     ]
 
-    def __init__(self, ox: list, oy: list):
+    def __init__(self, ox: list, oy: list， min_x, max_x, min_y, max_y， obstacle_radius, temp_start_x, temp_start_y, goal_x, goal_y, gs, robot_size):
         # Ensure that within the algorithm implementation all node coordinates
         # are indices in the grid and extend
         # from 0 to abs(<axis>_max - <axis>_min)
